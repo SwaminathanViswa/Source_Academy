@@ -1,1 +1,7 @@
 
+function sq(x) {
+    return x * x;
+    
+}
+
+sq(5);
