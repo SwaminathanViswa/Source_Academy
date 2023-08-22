@@ -1,7 +1,20 @@
 
-function sq(x) {
-    return x * x;
+// function sq(x) {
+//     return x * x;
     
-}
+// }
 
-sq(5);
+// sq(5);
+
+
+import {make_cross,sail,heart,show,stackn,stack_frac} from "rune";
+
+function stacka(n,rune) {
+    return n === 1
+    ? rune
+    : stack_frac(1/n,
+                rune,
+                stacka(n-1,rune));
+}
+show(stackn(5,heart));
+
