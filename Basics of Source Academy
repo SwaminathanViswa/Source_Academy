@@ -7,7 +7,7 @@
 // sq(5);
 
 
-import {make_cross,sail,heart,show,stackn,stack_frac,repeat_pattern} from "rune";
+/*import {make_cross,sail,heart,show,stackn,stack_frac,repeat_pattern} from "rune";
 
 function stacka(n,rune) {
     return n === 1
@@ -18,4 +18,18 @@ function stacka(n,rune) {
 }
 show(stackn(5,heart));
 
-show(repeat_pattern(6,make_cross,sail));
+show(repeat_pattern(6,make_cross,sail));*/
+
+
+
+function square(x) {
+    return x * x;
+}
+
+function repeat_pattern(n, pat, init) {
+  return n === 0
+         ? init 
+         : pat(repeat_pattern(n - 1, pat, init));
+}
+
+repeat_pattern(3, square, 2);
