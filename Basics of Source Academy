@@ -1,5 +1,19 @@
 import {show,stack,circle,scale,overlay_frac,stack_frac,quarter_turn_right,blank,square,beside_frac} from "rune";
 
+function spiral(thickness, depth) {
+    return stack_frac(thickness,hook(thickness/2),blank);
+
+    
+    
+}
+
+function hook(frac) {
+
+    return stack(square,beside_frac(1-frac,blank,square));
+}
+
+// Test
+show(spiral(1/2,1));
 
 // function cone(n,rune) {
 //     const x = n;
