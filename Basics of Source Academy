@@ -1,42 +1,48 @@
+import {show,stack,circle,scale,overlay_frac,stack_frac,quarter_turn_right,blank,square,beside_frac} from "rune";
 
-// function sq(x) {
-//     return x * x;
+
+// function cone(n,rune) {
+//     const x = n;
     
 // }
 
-// sq(5);
+// function hook(thickness, depth, count) {
+//     // your answer here
+//     return stack_frac(
+//         thickness/2, square, 
+//         quarter_turn_right(stack_frac(thickness/2,beside_frac(thickness, square, blank),blank)));
+// }
+
+// function spiral(thickness, depth) {
+//     // your answer here
+//     return hook(thickness, depth, 1);
+// }
+
+// //Test
+// show(spiral(1/2, 1));
+
+// show(hook(1,5,5)); 
+
+// function hook(frac) {
+// //    your answer here
+//     return stack_frac(
+//         frac/2, square,
+//         beside_frac(1-frac/2, blank, stack_frac(frac, square, blank)));
+    
+// //    return stack_frac(frac/2,square,beside_frac(1-frac/2,blank,stack_frac(frac,square,blank)));
+
+// //    return stack(square,beside_frac(1-frac,blank,square));
+// }
+
+// // Test
+// show(hook(1));
 
 
-/*import {make_cross,sail,heart,show,stackn,stack_frac,repeat_pattern} from "rune";
+// function cone(n,a,rune) {
+//     const x = n;
+//     return n===1? rune
+//                 : overlay_frac(1/n,scale(a/(n+3),rune),cone(n-1,a+1,rune));
+                
+// }
 
-function stacka(n,rune) {
-    return n === 1
-    ? rune
-    : stack_frac(1/n,
-                rune,
-                stacka(n-1,rune));
-}
-show(stackn(5,heart));
-
-show(repeat_pattern(6,make_cross,sail));*/
-
-
-
-/*function square(x) {
-    return x * x;
-}
-
-function repeat_pattern(n, pat, init) {
-  return n === 0
-         ? init 
-         : pat(repeat_pattern(n - 1, pat, init));
-}
-
-repeat_pattern(3, square, 2);*/
-
-function factorial(n) {
-    return n === 1
-           ? 1
-           : n*factorial(n-1);
-}
-factorial(6);
+// show(cone(5,1,circle));
