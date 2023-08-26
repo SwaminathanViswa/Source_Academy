@@ -1,19 +1,35 @@
-import {show,stack,circle,scale,overlay_frac,stack_frac,quarter_turn_right,blank,square,beside_frac} from "rune";
+import {show,stack,circle,heart,scale,overlay_frac,beside,stack_frac,quarter_turn_right,blank,square,beside_frac} from "rune";
 
-function spiral(thickness, depth) {
-    return stack_frac(thickness,hook(thickness/2),blank);
+function f1(rune_1, n, rune_2) {
+    return n === 0 ? rune_2
+                   : f1(rune_1,n-1,beside(rune_1,stack(blank,rune_2)));
+                   
+}
+
+show(f1(square,3,heart));
+
+function f2(rune,n) {
+    return n === 0 ? rune
+                   : stack(beside(blank,f2(rune,n-1)),square);
+                   
+}
+
+show(f2(heart,3));
+
+// function spiral(thickness, depth) {
+//     return stack_frac(thickness,hook(thickness/2),blank);
 
     
     
-}
+// }
 
-function hook(frac) {
+// function hook(frac) {
 
-    return stack(square,beside_frac(1-frac,blank,square));
-}
+//     return stack(square,beside_frac(1-frac,blank,square));
+// }
 
-// Test
-show(spiral(1/2,1));
+// // Test
+// show(spiral(1/2,1));
 
 // function cone(n,rune) {
 //     const x = n;
