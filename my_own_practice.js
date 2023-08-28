@@ -49,31 +49,6 @@ function ways_to_climb_steps(n) {
 // ways_to_climb_steps(4);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function moony_1(bottom_right) {
     return beside(stack(circle, square), stack(blank, bottom_right));
 }
