@@ -33,7 +33,20 @@ function corner_fractal(rune, n) {
                 stack(fractal(rune, n-1), fractal(rune, n-1))));
 }
 
-show(corner_fractal(heart, 4));
+// show(corner_fractal(heart, 4));
+
+
+// Exercise 2: Number of ways to climb a staircase.
+// The sequence goes as follows: 1,2,3,5,8... basically its the 
+// fibonacci sequence.
+
+function ways_to_climb_steps(n) {
+    return n <= 2
+        ? n 
+        : ways_to_climb_steps(n - 1) + ways_to_climb_steps(n - 2);
+}
+
+// ways_to_climb_steps(4);
 
 
 
