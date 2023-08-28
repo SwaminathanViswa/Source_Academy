@@ -56,7 +56,9 @@ function iter(base, power, product) {
         : iter(base, power-1, product * base);
 }
 
-fast_expt(5,3);
+// fast_expt(5,3);
+
+
 
 
 
