@@ -1,4 +1,44 @@
-import {circle, square, blank, ribbon, show, beside, beside_frac, stack, stack_frac} from "rune";
+import {circle, square, blank, heart, ribbon, show, beside, beside_frac, stack, stack_frac} from "rune";
+
+function vert_fractal(rune,n) {
+    return n === 1
+        ? heart
+        : stack(beside_frac(1/2, vert_fractal(rune, n-1), vert_fractal(rune, n-1)),rune);
+}
+
+// show(vert_fractal(heart, 5));
+
+function corner_fractal(rune, n) {
+    return n === 1
+        ? rune
+        : 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -57,24 +97,4 @@ function iter(base, power, product) {
 }
 
 // fast_expt(5,3);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
