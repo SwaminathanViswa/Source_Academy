@@ -1,99 +1,58 @@
-import {show,ribbon,stack,circle,heart,scale,overlay_frac,beside,stack_frac,quarter_turn_right,blank,square,beside_frac} from "rune";
+import { stack, circle, square, blank, ribbon, beside, stack_frac, beside_frac, show } from "rune";
 
-
-function moony_1 (bottom_right) {
-    return beside(stack(circle,square),stack(blank,bottom_right));
+// Q1
+function moony_1(rune){
+    return stack(
+        beside(circle, blank),
+        beside(square, rune));
 }
-
 // show(moony_1(ribbon));
 
-function moony_2 (n) {
-    return n === 1 
-                 ? circle
-                 : beside(stack(circle,square),stack(blank,moony_2(n-1)));
-}
-//show (moony_2(5));
-
-function moony (n) {
-    return n === 1 
-                 ? circle
-                 : beside_frac(1/n,stack_frac(1/n,circle,square),stack_frac(1/n,blank,moony(n-1)));
+// Q2
+function moony_2(n){
+    return n === 0
+        ? circle
+        // : stack(beside(circle, blank), beside(square, moony_2(n-1)));
+        : moony_1(moony_2(n-1));
 }
 
-show(moony(5));
-// function f1(rune_1, n, rune_2) {
-//     return n === 0 ? rune_2
-//                   : f1(rune_1,n-1,beside(rune_1,stack(blank,rune_2)));
-                   
-// }
+// show(moony_2(5));
 
-// show(f1(square,3,heart));
+// Q3
+function moony(n){
+    return n === 1 
+        ? circle
+        : beside_frac(1/n,
+            stack_frac(1/n, circle, square),
+            stack_frac(1/n, blank, moony(n-1)));
+            
+    // return n === 1
+    //     ? circle
+    //     : stack_frac(1/n,
+    //         beside_frac(1/n, circle, blank),
+    //         beside_frac(1/n, square, moony_3(n-1)));
+}
 
-// function f2(rune,n) {
-//     return n === 0 ? rune
-//                   : stack(beside(blank,f2(rune,n-1)),square);
-                   
-// }
+// show(moony(5));
 
-// show(f2(heart,3));
+function moony_3(n){
+    return n === 1 
+        ? circle
+        : beside(
+            stack_frac(1/n, circle, square),
+            stack_frac(1/n, blank, moony_3(n-1)));
+}
+show(moony_3(5));
 
-// function spiral(thickness, depth) {
-//     return stack_frac(thickness,hook(thickness/2),blank);
+// Q4
+/*The solutions give rise to a recursive process due to the presence of
+the deferred operations in the calling function. */
 
-    
-    
-// }
+/* In this case, the size of the problem is the number of steps that is required 
+for the function to execute. So the orders of growth is linear, O(n) */
 
-// function hook(frac) {
-
-//     return stack(square,beside_frac(1-frac,blank,square));
-// }
-
-// // Test
-// show(spiral(1/2,1));
-
-// function cone(n,rune) {
-//     const x = n;
-    
-// }
-
-// function hook(thickness, depth, count) {
-//     // your answer here
-//     return stack_frac(
-//         thickness/2, square, 
-//         quarter_turn_right(stack_frac(thickness/2,beside_frac(thickness, square, blank),blank)));
-// }
-
-// function spiral(thickness, depth) {
-//     // your answer here
-//     return hook(thickness, depth, 1);
-// }
-
-// //Test
-// show(spiral(1/2, 1));
-
-// show(hook(1,5,5)); 
-
-// function hook(frac) {
-// //    your answer here
-//     return stack_frac(
-//         frac/2, square,
-//         beside_frac(1-frac/2, blank, stack_frac(frac, square, blank)));
-    
-// //    return stack_frac(frac/2,square,beside_frac(1-frac/2,blank,stack_frac(frac,square,blank)));
-
-// //    return stack(square,beside_frac(1-frac,blank,square));
-// }
-
-// // Test
-// show(hook(1));
-
-
-// function cone(n,a,rune) {
-//     const x = n;
-//     return n===1? rune
-//                 : overlay_frac(1/n,scale(a/(n+3),rune),cone(n-1,a+1,rune));
-                
-// }
-
-// show(cone(5,1,circle));
+/*
+Assumptions:
+1. All of the runes take up the same amount of resources (time and space) to compute.
+2. All runes use constant (O(1)) resource.
+*/
