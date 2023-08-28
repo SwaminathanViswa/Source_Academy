@@ -44,7 +44,6 @@ function is_even(x) {
     return x % 2 === 0;
 }
 
-
 function fast_expt(b,n) {
     return iter(b,n,1);
 }
