@@ -1,20 +1,32 @@
 import {circle, square, blank, heart, ribbon, show, beside, beside_frac, stack, stack_frac} from "rune";
 
+
+function fractal(rune, n) {
+    return n === 1
+          ? rune // In the base case, return the identity
+          // Stack smaller cases first, then put beside the identity
+          : beside(rune,
+                    stack(fractal(rune, n - 1),
+                          fractal(rune, n - 1))); 
+}
+
+// show(fractal(heart, 4));
+
 function vert_fractal(rune,n) {
     return n === 1
         ? heart
         : stack(beside_frac(1/2, vert_fractal(rune, n-1), vert_fractal(rune, n-1)),rune);
 }
 
-// show(vert_fractal(heart, 5));
+// show(vert_fractal(heart, 3));
 
 function corner_fractal(rune, n) {
     return n === 1
         ? rune
-        : 
+        : beside(vert_fractal(rune, n), stack(corner_fractal(rune, n-1), stack(fractal(rune, n-1), fractal(rune, n-1))));
 }
 
-
+show(corner_fractal(heart, 4));
 
 
 
