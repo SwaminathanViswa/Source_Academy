@@ -15,7 +15,10 @@ function fractal(rune, n) {
 function vert_fractal(rune,n) {
     return n === 1
         ? heart
-        : stack(beside_frac(1/2, vert_fractal(rune, n-1), vert_fractal(rune, n-1)),rune);
+        : stack(beside(
+                vert_fractal(rune, n-1), 
+                vert_fractal(rune, n-1)),
+            rune);
 }
 
 // show(vert_fractal(heart, 3));
@@ -23,7 +26,11 @@ function vert_fractal(rune,n) {
 function corner_fractal(rune, n) {
     return n === 1
         ? rune
-        : beside(vert_fractal(rune, n), stack(corner_fractal(rune, n-1), stack(fractal(rune, n-1), fractal(rune, n-1))));
+        : beside(
+            vert_fractal(rune, n), 
+            stack(
+                corner_fractal(rune, n-1), 
+                stack(fractal(rune, n-1), fractal(rune, n-1))));
 }
 
 show(corner_fractal(heart, 4));
