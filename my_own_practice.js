@@ -114,11 +114,11 @@ function iter(exp, base, product) {
     return exp === 1
            ? product
            : (exp % 2 === 0) 
-           ? iter(exp / 2, base, product * math_pow(math_pow(base, exp / 2), 2))
-           : iter(exp - 1, base, product * math_pow(base, exp - 1));
+           ? iter(exp / 2, base, product * math_pow(base, exp / 2))
+           : base * math_pow(base, exp - 1);
 }
 
-fast_expt(3,3);
+fast_expt(3,4);
 
 
 
