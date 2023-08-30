@@ -83,25 +83,56 @@ function moony(n) {
 
 // fast_expt(4,7);
 
-function squ (x) {
-    return x *x;
-}
+// function squ (x) {
+//     return x *x;
+// }
 
-function is_even(x) {
-    return x % 2 === 0;
-}
+// function is_even(x) {
+//     return x % 2 === 0;
+// }
+
+// function fast_expt(b,n) {
+//     return iter(b,n,1);
+// }
+
+// function iter(base, power, product) {
+//     return power === 1
+//         ? product
+//         : is_even(power)
+//         ? iter(base, power/2, squ(base) * product)
+//         : iter(base, power-1, product * base);
+// }
+
+// fast_expt(3,7);
+
 
 function fast_expt(b,n) {
-    return iter(b,n,1);
+    return iter(n, b, 1);
 }
 
-function iter(base, power, product) {
-    return power === 1
-        ? product
-        : is_even(power)
-        ? iter(base, power/2, squ(base) * product)
-        : iter(base, power-1, product * base);
+function iter(exp, base, product) {
+    return exp === 1
+           ? product
+           : (exp % 2 === 0) 
+           ? iter(exp/2, base, base * math_pow(base,exp))
+           : iter(exp - 1, base, product * math_pow(base, exp - 1));
 }
 
-// fast_expt(5,3);
+fast_expt(3,3);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
