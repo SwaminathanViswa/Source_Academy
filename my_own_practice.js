@@ -83,17 +83,19 @@ function moony(n) {
 
 // fast_expt(4,7);
 
-// function squ (x) {
-//     return x *x;
-// }
+function squ (x) {
+    return x *x;
+}
 
-// function is_even(x) {
-//     return x % 2 === 0;
-// }
+function is_even(x) {
+    return x % 2 === 0;
+}
 
-// function fast_expt(b,n) {
-//     return iter(b,n,1);
-// }
+function fast_expt(b,n) {
+    return iter(b,n,1);
+}
+
+// The commented code below is not the best case as it doesn't use the formula given.
 
 // function iter(base, power, product) {
 //     return power === 1
@@ -103,22 +105,30 @@ function moony(n) {
 //         : iter(base, power-1, product * base);
 // }
 
-// fast_expt(3,7);
-
-
-function fast_expt(b,n) {
-    return iter(n, b, 1);
-}
-
-function iter(exp, base, product) {
-    return exp === 1
-           ? product
-           : (exp % 2 === 0) 
-           ? iter(exp / 2, base, product * math_pow(base, exp / 2))
-           : base * math_pow(base, exp - 1);
+function iter(base, power, product) {
+    return power === 0
+        ? product
+        : is_even(power)
+        ? iter(base * base, power/2, product)
+        : iter(base, power-1, product * base);
 }
 
 fast_expt(3,4);
+
+
+// function fast_expt(b,n) {
+//     return iter(n, b, 1);
+// }
+
+// function iter(exp, base, product) {
+//     return exp === 1
+//           ? product
+//           : (exp % 2 === 0) 
+//           ? iter(exp / 2, base, product * math_pow(base, exp / 2))
+//           : base * math_pow(base, exp - 1);
+// }
+
+// fast_expt(3,4);
 
 
 
