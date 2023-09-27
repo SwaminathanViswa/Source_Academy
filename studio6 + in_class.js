@@ -89,6 +89,7 @@ function remove_duplicates(lst) {
         );
 }
 
+
 // remove_duplicates(list(1, 2, 3, 4, 4, 3, 2, 1, 2));
 // return list(1, 2, 3, 4)
 // remove_duplicates(list("a", "x", "b", "c", "c", "b", "d"));
