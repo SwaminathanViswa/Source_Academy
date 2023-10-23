@@ -54,6 +54,7 @@ bubblesort_list(LL);
 LL; // should show [1, [2, [3, [4, [5, null]]]]]
 */
 
+/*
 const mem = [];
 
 function read(n, k) {
@@ -113,10 +114,68 @@ function mcc(n, k) {
 // space: Theta(nk)
 // time:  Theta(nk)
 
-mcc(365, 5);  // Expected result: 1730
+// mcc(365, 5);  // Expected result: 1730
+*/
 
+function rotate_matrix(M) {
+    const n = array_length(M);
+    
+    function swap(r1, c1, r2, c2){
+        const temp = M[r1][c1];
+        M[r1][c1] = M[r2][c2];
+        M[r2][c2] = temp;
+    }
+    
+    // matrix transpose
+    for (let i = 0; i < n; i = i + 1){
+        for (let j = i + 1; j < n; j = j + 1){
+            swap(i, j, j, i);
+        }
+    }
+    
+    // reverse each row
+    const half_len = math_floor(n / 2);
+    for (let i = 0; i < n; i = i + 1){
+        for (let j = 0; j < half_len; j = j + 1){
+            swap(i, j, i, n - 1 - j);
+        }
+    }
+}
 
+function transpose(A) {
+    for( let i = 0; i < array_length(A); i = i + 1){
+        for( let j = i + 1; j < array_length(A[0]); j = j + 1){
+            const temp = A[i][j];
+            A[i][j] = A[j][i];
+            A[j][i] = temp;
+        }
+    }
+}
+function swap(A, i, j) {
+    let temp = A[i];
+    A[i] = A[j];
+    A[j] = temp;
+}
+function reverse_array(A) {
+    const len = array_length(A);
+    const half_len = math_floor(len / 2);
+    let i = 0;
+    while (i < half_len) {
+        const j = len - 1 - i;
+        swap(A, i, j);
+        i = i + 1;
+    }
+}
+function rotate(A) {
+    transpose(A);
+    for ( let i = 0; i < array_length(A); i = i + 1) {
+        reverse_array(A[i]);
+    }
+}
 
+const A = [[ 1, 2, 3, 4], [5, 6, 7, 8], [ 9, 10, 11, 12], [13, 14, 15, 16]];
+rotate(A);
+A;
 
 
 
