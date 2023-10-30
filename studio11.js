@@ -39,4 +39,26 @@ function zeros3() {
     return add_streams(alt_ones3, stream_tail(alt_ones3));
 }
 
-eval_stream(zeros3(), 5);
+// s1
+// const s1 = ones_stream
+// const s1 = stream_map(x => 1, ...)
+const s1 = fun_to_series(x => 1);
+
+// s2
+const s2 = fun_to_series(x => x + 1);
+const ones = pair(1, () => ones);
+const s2 = pair(1, () => add_streams(ones, s2));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
