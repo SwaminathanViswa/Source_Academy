@@ -90,9 +90,12 @@ the first argument list.
 
 // (e)
 function interleave_stream_append(s1, s2) {
-    return pair(head(s1), 
-            () => pair(head(s2), 
-                () => interleave_stream_append(stream_tail(s1), stream_tail(s2))));
+    // return pair(head(s1), 
+    //         () => pair(head(s2), 
+    //             () => interleave_stream_append(stream_tail(s1), stream_tail(s2))));
+    return is_null(s1)
+        ? s2
+        : pair(head(s1), () => interleave_stream_append(s2, stream_tail(s1)));
 }
 
 
