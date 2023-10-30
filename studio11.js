@@ -106,8 +106,50 @@ const integers = pair(1, () => stream_map(x => x + 1, integers));
 const ss = interleave_stream_append(ones, integers);
 
 
-eval_stream(ss, 20);
+// eval_stream(ss, 20);
 
+/*
+[ [1, 2],
+[ [1, 3],
+[ [2, 3],
+[ [1, 4],
+[ [2, 4],
+[ [1, 5],
+[ [3, 4],
+[ [1, 6],
+[ [2, 5],
+[ [1, 7],
+[ [3, 5],
+[ [1, 8],
+[ [2, 6],
+[[1, 9], [[4, 5], [[1, 10]
+*/
+
+const stream_append_pickle = stream_append;
+function stream_pairs2(s) {
+    return is_null(s)
+        ? null
+        : stream_append_pickle(
+            stream_map(
+                sn => pair(head(s), sn),
+                stream_tail(s)),
+            () => stream_pairs2(stream_tail(s)));
+}
+
+function stream_pairs3(s) {
+    return is_null(s)
+        ? null
+        : pair(pair(head(s), head(stream_tail(s))),
+            () => interleave_stream_append(
+                stream_map(
+                    sn => pair(head(s), sn),
+                    stream_tail(stream_tail(s))),
+                stream_pairs3(stream_tail(s))));
+}
+
+const s2 = stream_pairs3(integers);
+
+eval_stream(s2, 20);
 /*
 [ 1, [ 1,
 [ 1, [ 2,
